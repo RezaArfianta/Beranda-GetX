@@ -1,0 +1,59 @@
+{
+    "Data": [
+        {
+            "Id": 20095,
+            "JudulBuku": "Kisah Tanah Jawa",
+            "FileCover": "20095.jpg",
+            "CreatedDate": "2020-02-06T11:23:02.243",
+            "NamaPengarang": "Mada",
+            "NamaPenerbit": "Gagas Media",
+            "Jumlah": null,
+            "LokasiRak": "813",
+            "Lokasi": "Perpustakaan Pusat Kementerian Keuangan (Setjen)"
+        },
+        {
+            "Id": 20096,
+            "JudulBuku": "Perekat Indonesia",
+            "FileCover": "20096.jpg",
+            "CreatedDate": "2020-03-09T10:26:01.57",
+            "NamaPengarang": "Kementerian Keuangan",
+            "NamaPenerbit": "Kementerian Keuangan",
+            "Jumlah": null,
+            "LokasiRak": "910",
+            "Lokasi": "Perpustakaan Pusat Kementerian Keuangan (Setjen)"
+        },
+        {
+            "Id": 20099,
+            "JudulBuku": "Dasyatnya Kekuatan Istigfar edited",
+            "FileCover": "20099.jpg",
+            "CreatedDate": "2020-03-09T11:09:46.217",
+            "NamaPengarang": "Hasan",
+            "NamaPenerbit": "Kiswah Media",
+            "Jumlah": null,
+            "LokasiRak": "297",
+            "Lokasi": "Perpustakaan Pusat Kementerian Keuangan (Setjen)"
+        },
+        {
+            "Id": 9112,
+            "JudulBuku": "Pembiayaan Anggaran",
+            "FileCover": "9112.jpg",
+            "CreatedDate": "2018-07-17T08:46:02.343",
+            "NamaPengarang": "Kementrian",
+            "NamaPenerbit": "Direktorat Penyusunan APBN Direktorat Jenderal Keuangan",
+            "Jumlah": null,
+            "LokasiRak": "332",
+            "Lokasi": "Perpustakaan Pusat Kementerian Keuangan (Setjen)"
+        },
+        {
+            "Id": 9113,
+            "JudulBuku": "Buku Saku APBN dan Indikator Ekonomi 2018",
+            "FileCover": "9113.jpg",
+            "CreatedDate": "2018-07-17T12:05:07.617",
+            "NamaPengarang": "Kementrian",
+            "NamaPenerbit": "Kementrian Keuangan Direktorat Jenderal Anggaran",
+            "Jumlah": null,
+            "LokasiRak": "332",
+            "Lokasi": "Perpustakaan Pusat Kementerian Keuangan (Setjen)"
+        }
+    ]
+}
