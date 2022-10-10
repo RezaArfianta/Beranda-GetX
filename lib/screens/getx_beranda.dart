@@ -12,11 +12,13 @@ class GetxBeranda extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     BerandaController c = Get.put(BerandaController());
-    c.getBukuTerbaru();
+    // c.getBukuTerbaru();
+    // c.getBukuTerlaris();
+    c.getBuku();
 
     return Scaffold(
         appBar: AppBar(
-          title: Obx(() => Text("Getx beranda ${c.listBuku.value.length}")),
+          title: Text("Getx Perpustakaan"),
           actions: [
             IconButton(
               icon: Icon(Icons.refresh),
@@ -34,7 +36,7 @@ class GetxBeranda extends StatelessWidget {
               );
             }
 
-            if (c.listBuku.value.isNotEmpty) {
+            if (c.listTerbaru.value.isNotEmpty) {
               return Container(
                 child: ScrollConfiguration(
                   behavior: ScrollConfiguration.of(context)
@@ -64,7 +66,7 @@ class GetxBeranda extends StatelessWidget {
                         ),
                         itemBuilder: (_, index) {
                           return CardBuku(
-                            buku: c.listBuku.value[index],
+                            buku: c.listTerbaru.value[index],
                           );
                           // return ListTile(
                           //   title: Text(c.listBuku.value[index].judulBuku),
@@ -72,7 +74,7 @@ class GetxBeranda extends StatelessWidget {
                           // );
                           // return Text(c.listBuku.value[index].judulBuku);
                         },
-                        itemCount: c.listBuku.value.length,
+                        itemCount: c.listTerbaru.value.length,
                       ),
                     ),
                     SizedBox(
@@ -86,6 +88,28 @@ class GetxBeranda extends StatelessWidget {
                         style: TextStyle(
                             fontSize: 18, fontWeight: FontWeight.bold),
                         textAlign: TextAlign.left,
+                      ),
+                    ),
+                    Container(
+                      height: 320,
+                      child: ListView.separated(
+                        padding: EdgeInsets.all(10),
+                        shrinkWrap: true,
+                        scrollDirection: Axis.horizontal,
+                        separatorBuilder: (_, index) => SizedBox(
+                          width: 12,
+                        ),
+                        itemBuilder: (_, index) {
+                          return CardBuku(
+                            buku: c.listTerlaris.value[index],
+                          );
+                          // return ListTile(
+                          //   title: Text(c.listTerlaris.value[index].judulBuku),
+                          //   subtitle: Text(c.listTerlaris.value[index].namaPengarang),
+                          // );
+                          // return Text(c.listTerlaris.value[index].judulBuku);
+                        },
+                        itemCount: c.listTerlaris.value.length,
                       ),
                     ),
                   ]),
