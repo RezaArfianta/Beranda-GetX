@@ -20,65 +20,65 @@ class BerandaController extends GetxController {
     print("cetak");
   }
 
-  Future<void> getBukuTerlaris() async {
-    try {
-      isLoading(true);
-      http.Response response = await http.get(Uri.tryParse(
-          'https://demo-service.kemenkeu.go.id/perpustakaan/Koleksi/GetTerlaris')!);
-      print('konek api');
+  // Future<void> getBukuTerlaris() async {
+  //   try {
+  //     isLoading(true);
+  //     http.Response response = await http.get(Uri.tryParse(
+  //         'https://demo-service.kemenkeu.go.id/perpustakaan/Koleksi/GetTerlaris')!);
+  //     print('konek api');
 
-      if (response.statusCode == 200) {
-        Map result = jsonDecode(response.body);
-        print('dapet data');
+  //     if (response.statusCode == 200) {
+  //       Map result = jsonDecode(response.body);
+  //       print('dapet data');
 
-        List<dynamic> listDyn = result["Data"];
-        List<Buku> listTerlaris = [];
-        listDyn.forEach((element) {
-          listTerlaris.add(Buku.fromJson(element));
-        });
+  //       List<dynamic> listDyn = result["Data"];
+  //       List<Buku> listTerlaris = [];
+  //       listDyn.forEach((element) {
+  //         listTerlaris.add(Buku.fromJson(element));
+  //       });
 
-        this.listTerlaris.value = listTerlaris;
-        this.listTerlaris.refresh();
-        print('sampe sini');
+  //       this.listTerlaris.value = listTerlaris;
+  //       this.listTerlaris.refresh();
+  //       print('sampe sini');
 
-        print('kebaca');
-      } else {}
-    } catch (e) {
-      print('error');
-    } finally {
-      isLoading(false);
-    }
-  }
+  //       print('kebaca');
+  //     } else {}
+  //   } catch (e) {
+  //     print('error');
+  //   } finally {
+  //     isLoading(false);
+  //   }
+  // }
 
-  Future<void> getBukuTerbaru() async {
-    try {
-      isLoading(true);
-      http.Response response = await http.get(Uri.tryParse(
-          'https://demo-service.kemenkeu.go.id/perpustakaan/Koleksi/GetTerbaru')!);
-      print('konek api');
+  // Future<void> getBukuTerbaru() async {
+  //   try {
+  //     isLoading(true);
+  //     http.Response response = await http.get(Uri.tryParse(
+  //         'https://demo-service.kemenkeu.go.id/perpustakaan/Koleksi/GetTerbaru')!);
+  //     print('konek api');
 
-      if (response.statusCode == 200) {
-        Map result = jsonDecode(response.body);
-        print('dapet data');
+  //     if (response.statusCode == 200) {
+  //       Map result = jsonDecode(response.body);
+  //       print('dapet data');
 
-        List<dynamic> listDyn = result["Data"];
-        List<Buku> listTerbaru = [];
-        listDyn.forEach((element) {
-          listTerbaru.add(Buku.fromJson(element));
-        });
+  //       List<dynamic> listDyn = result["Data"];
+  //       List<Buku> listTerbaru = [];
+  //       listDyn.forEach((element) {
+  //         listTerbaru.add(Buku.fromJson(element));
+  //       });
 
-        this.listTerbaru.value = listTerbaru;
-        this.listTerbaru.refresh();
-        print('sampe sini');
+  //       this.listTerbaru.value = listTerbaru;
+  //       this.listTerbaru.refresh();
+  //       print('sampe sini');
 
-        print('kebaca');
-      } else {}
-    } catch (e) {
-      print('error');
-    } finally {
-      isLoading(false);
-    }
-  }
+  //       print('kebaca');
+  //     } else {}
+  //   } catch (e) {
+  //     print('error');
+  //   } finally {
+  //     isLoading(false);
+  //   }
+  // }
 
   // readData(BuildContext context) async {
   //   isLoading.value = true;
