@@ -128,7 +128,7 @@ class BerandaController extends GetxController {
         listDyn1.forEach((element) {
           listTerbaru.add(Buku.fromJson(element));
         });
-        listDyn1.forEach((element) {
+        listDyn2.forEach((element) {
           listTerlaris.add(Buku.fromJson(element));
         });
         this.listTerbaru.value = listTerbaru;
