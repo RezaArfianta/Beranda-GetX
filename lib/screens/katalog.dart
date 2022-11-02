@@ -27,6 +27,7 @@ class GetxKatalog extends StatelessWidget {
     // c.getPage;
 
     return Scaffold(
+        resizeToAvoidBottomInset: false,
         appBar: AppBar(
           title: Text('GetX Perpustakaan'),
           actions: [
@@ -83,6 +84,7 @@ class GetxKatalog extends StatelessWidget {
                             behavior: ScrollConfiguration.of(context)
                                 .copyWith(scrollbars: false),
                             child: Obx(() => ListView.builder(
+                                  key: PageStorageKey(0),
                                   controller: c.scrollController.value,
                                   shrinkWrap: true,
                                   padding: EdgeInsets.only(left: 10, right: 10),
