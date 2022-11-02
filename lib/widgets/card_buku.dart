@@ -99,7 +99,7 @@ class CardBuku extends StatelessWidget {
                       ),
                     ),
                     Padding(
-                      padding: EdgeInsets.only(right: 30, left: 30, bottom: 20),
+                      padding: EdgeInsets.only(right: 30, left: 30, bottom: 30),
                       child: ClipRRect(
                         borderRadius: BorderRadius.only(
                             topLeft: Radius.circular(10),
