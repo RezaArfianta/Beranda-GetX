@@ -27,9 +27,8 @@ class GetxKatalog extends StatelessWidget {
     // c.getPage;
 
     return Scaffold(
-        resizeToAvoidBottomInset: false,
         appBar: AppBar(
-          title: Text('GetX Perpustakaan'),
+          title: Text("Perpustakaan"),
           actions: [
             IconButton(
               icon: Icon(Icons.refresh),
@@ -84,30 +83,15 @@ class GetxKatalog extends StatelessWidget {
                             behavior: ScrollConfiguration.of(context)
                                 .copyWith(scrollbars: false),
                             child: Obx(() => ListView.builder(
-                                  key: PageStorageKey(0),
-                                  controller: c.scrollController.value,
-                                  shrinkWrap: true,
-                                  padding: EdgeInsets.only(left: 10, right: 10),
-                                  itemCount: c.listKatalog.value.length,
-                                  itemBuilder: (context, int index) {
-                                    if (index ==
-                                        c.listKatalog.value.length + 1) {
-                                      return Padding(
-                                        padding:
-                                            EdgeInsets.symmetric(vertical: 20),
-                                        child: Center(
-                                          child: c.hasMore
-                                              ? const CircularProgressIndicator()
-                                              : const Text('Data habis'),
-                                        ),
-                                      );
-                                    } else {
-                                      return KatalogCard(
-                                        iniKatalog: c.listKatalog.value[index],
-                                      );
-                                    }
-                                  },
-                                )),
+                                controller: c.scrollController.value,
+                                shrinkWrap: true,
+                                padding: EdgeInsets.only(left: 10, right: 10),
+                                itemBuilder: (context, int index) {
+                                  return KatalogCard(
+                                    iniKatalog: c.listKatalog.value[index],
+                                  );
+                                },
+                                itemCount: c.listKatalog.value.length)),
                           ),
                         ))
                       ],
@@ -116,9 +100,9 @@ class GetxKatalog extends StatelessWidget {
             }
 
             return Container(
-              child: (Center(
-                child: Text("Data tidak ditemukan"),
-              )),
+              child: Center(
+                child: Text('Data gakebaca'),
+              ),
             );
           }),
         ));

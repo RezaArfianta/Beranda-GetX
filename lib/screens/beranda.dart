@@ -18,7 +18,7 @@ class GetxBeranda extends StatelessWidget {
 
     return Scaffold(
         appBar: AppBar(
-          title: Text("GetX Perpustakaan"),
+          title: Text("Perpustakaan"),
           actions: [
             IconButton(
               icon: Icon(Icons.refresh),

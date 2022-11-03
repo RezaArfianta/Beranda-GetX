@@ -27,6 +27,7 @@ class BerandaController extends GetxController {
 
   Future<void> getBukuTerlaris() async {
     try {
+      Future.delayed(Duration(seconds: 2));
       isLoading(true);
       bukuResponse = await Services().getBukuTerlaris();
       // print(bukuResponse!.data);

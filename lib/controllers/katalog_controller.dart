@@ -41,10 +41,47 @@ class KatalogController extends GetxController {
     print("cetak");
   }
 
+  // Future<void> getKatalog() async {
+  //   try {
+  //     isLoading(true);
+  //     http.Response response = await http.get(Uri.tryParse(
+  //         'https://demo-service.kemenkeu.go.id/perpustakaan/Koleksi/GetAll?PageSize=10&Page=$page&keyword=$keyword')!);
+  //     print('konek api');
+
+  //     if (response.statusCode == 200) {
+  //       Map result = jsonDecode(response.body);
+  //       print('dapet data');
+
+  //       List<dynamic> listDyn = result["Data"];
+  //       List<Katalog> listKatalog = [];
+  //       listDyn.forEach((element) {
+  //         listKatalog.add(Katalog.fromJson(element));
+  //       });
+
+  //       this.listKatalog.value = listKatalog;
+  //       this.listKatalog.refresh();
+  //       print('sampe sini');
+  //     } else {}
+  //   } catch (e) {
+  //     print('error');
+  //   } finally {
+  //     isLoading(false);
+  //   }
+  // }
+
+  // Future<void> getPage(int page, String keyword) async {
+  //   if (katalogResponse != null) {
+  //     listKatalog.addAll(katalogResponse!.data!);
+  //     katalogResponse!.data!.forEach((element) {});
+  //     hasMore = page * 10 < katalogResponse!.total!;
+
+  //     print("getPage kebaca");
+  //   }
+  // }
+
   Future<void> fetchkatalog(int page, String keyword) async {
     log("halo");
     try {
-      isLoading(true);
       katalogResponse = await Services().getListKatalog(page, keyword);
 
       katalogResponse!.data.forEach((element) {
@@ -52,13 +89,16 @@ class KatalogController extends GetxController {
         listKatalog.value.add(element);
       });
       // listKatalog.value.addAll(katalogResponse!.data!);
-      // listKatalog.refresh();
+      listKatalog.refresh();
       hasMore = page * 10 <= katalogResponse!.total;
       print(katalogResponse!.total);
+      // if (katalogResponse != null) {
+
+      // } else {
+      //   print("okok");
+      // }
     } catch (e) {
       print(e);
-    } finally {
-      isLoading(false);
     }
   }
 
