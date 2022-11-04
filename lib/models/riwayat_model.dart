@@ -3,22 +3,27 @@ class History {
   String? judulBuku;
   String? namaPenerbit;
   String? namaPengarang;
-  String? tanggalPinjam;
+  DateTime? tanggalPinjam;
   String? tanggalKembali;
   String? tanggalKembaliRiil;
 
   History(
-      {required this.lokasi, required this.judulBuku, required this.namaPenerbit, required this.namaPengarang, required this.tanggalPinjam, required this.tanggalKembali, required this.tanggalKembaliRiil});
+      {required this.lokasi,
+      required this.judulBuku,
+      required this.namaPenerbit,
+      required this.namaPengarang,
+      required this.tanggalPinjam,
+      required this.tanggalKembali,
+      required this.tanggalKembaliRiil});
 
   History.fromJson(Map<String, dynamic> json) {
     lokasi = json['Lokasi'];
     judulBuku = json['JudulBuku'];
     namaPenerbit = json['NamaPenerbit'];
     namaPengarang = json['NamaPengarang'];
-    tanggalPinjam = json['TanggalPinjam'];
+    tanggalPinjam = DateTime.parse(json['TanggalPinjam']);
     tanggalKembali = json['TanggalKembali'];
-    tanggalKembaliRiil = json['TanggalKembaliRiil'];
-
+    tanggalKembaliRiil = (json['TanggalKembaliRiil']);
   }
 }
 
@@ -28,8 +33,7 @@ class RiwayatResponse {
   bool? success;
   String? message;
 
-  RiwayatResponse(
-      {this.data, this.total, this.success, this.message});
+  RiwayatResponse({this.data, this.total, this.success, this.message});
 
   RiwayatResponse.fromJson(Map<String, dynamic> json) {
     if (json['Data'] != null) {

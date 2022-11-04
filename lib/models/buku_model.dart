@@ -6,8 +6,29 @@ import 'package:meta/meta.dart';
 import 'dart:convert';
 
 Buku bukuFromJson(String str) => Buku.fromJson(json.decode(str));
-
 String bukuToJson(Buku data) => json.encode(data.toJson());
+
+BukuResponse bukuResponseFromJson(String str) =>
+    BukuResponse.fromJson(json.decode(str));
+
+String bukuResponseToJson(BukuResponse data) => json.decode(data.toString());
+
+class BukuResponse {
+  BukuResponse({
+    required this.data,
+  });
+
+  List<Buku> data;
+
+  factory BukuResponse.fromJson(Map<String, dynamic> json) => BukuResponse(
+      data: List<Buku>.from(json["Data"].map((x) => Buku.fromJson(x))));
+
+  Map<String, dynamic> toJson() => {
+        "Data": data == null
+            ? null
+            : List<dynamic>.from(data.map((x) => x.toJson())),
+      };
+}
 
 class Buku {
   Buku({
