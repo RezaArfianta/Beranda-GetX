@@ -22,7 +22,6 @@ class RiwayatController extends GetxController {
   onInit() {
     super.onInit();
     riwayatLoading();
-    fetch(page, '');
     scrollcontroller.value.addListener(() async {
       if (scrollcontroller.value.position.maxScrollExtent ==
           scrollcontroller.value.offset) {
@@ -36,17 +35,15 @@ class RiwayatController extends GetxController {
     print('object');
   }
 
-  Future<void> searchRiwayat() async{
-    try{
+  Future<void> searchRiwayat() async {
+    try {
       listRiwayat.clear();
       page = 1;
       keyword = InputController.text;
       fetch(page, keyword);
-    }catch(e){
+    } catch (e) {
       print(e);
-    }finally{
-
-    }
+    } finally {}
   }
 
   Future<void> riwayatLoading() async {
@@ -69,7 +66,7 @@ class RiwayatController extends GetxController {
       isError(false);
       isLoading(true);
       r = await Services().getListHistory(page, keyword);
-      if (r != null){
+      if (r != null) {
         r!.data?.forEach((element) {
           print(element);
           listRiwayat.value.add(element);
@@ -77,13 +74,13 @@ class RiwayatController extends GetxController {
         listRiwayat.refresh();
         print('total ${listRiwayat.value.length} < ${r!.total}');
         hasMore = listRiwayat.value.length < r!.total!;
-      }else{
+      } else {
         isError(true);
       }
       print(r!.total);
     } catch (e) {
       print(e);
-    }finally{
+    } finally {
       isLoading(false);
     }
   }

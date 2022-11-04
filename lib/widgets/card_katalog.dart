@@ -57,7 +57,9 @@ class KatalogCard extends StatelessWidget {
                     children: [
                       Expanded(
                         child: Text(
-                          '${iniKatalog?.abstrak}',
+                          iniKatalog?.abstrak != null
+                              ? '${iniKatalog?.abstrak}'
+                              : '-',
                           style: TextStyle(fontSize: 15),
                           textAlign: TextAlign.start,
                           overflow: TextOverflow.ellipsis,
