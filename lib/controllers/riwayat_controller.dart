@@ -20,8 +20,8 @@ class RiwayatController extends GetxController {
   @override
   onInit() {
     super.onInit();
+    riwayatLoading();
     fetch(page, '');
-    print('object');
     scrollcontroller.value.addListener(() async {
       if (scrollcontroller.value.position.maxScrollExtent ==
           scrollcontroller.value.offset) {
@@ -30,16 +30,27 @@ class RiwayatController extends GetxController {
         fetch(page, keyword);
       }
     });
+    print('object');
+  }
+
+  Future<void> riwayatLoading() async {
+    try {
+      isLoading(true);
+      await fetch(page, keyword);
+    } catch (e) {
+      print(e);
+    } finally {
+      isLoading(false);
+    }
   }
 
   Future<void> fetch(int page, String keyword) async {
     log('hai');
     try {
-      isLoading(true);
+      Future.delayed(Duration(seconds: 3));
 
       r = await Services().getListHistory(page, keyword);
       r!.data!.forEach((element) {
-        print(element);
         listRiwayat.value.add(element);
       });
       listRiwayat.refresh();
@@ -48,6 +59,5 @@ class RiwayatController extends GetxController {
     } catch (e) {
       print(e);
     }
-    isLoading(false);
   }
 }

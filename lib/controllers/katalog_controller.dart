@@ -7,7 +7,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 class KatalogController extends GetxController {
-  final TextEditingController InputController = TextEditingController();
+  final TextEditingController inputController = TextEditingController();
   var listKatalog = <Katalog>[].obs;
   var isLoading = false.obs;
   KatalogResponse? katalogResponse;
@@ -15,90 +15,85 @@ class KatalogController extends GetxController {
   int page = 1;
   String keyword = '';
   bool hasMore = true;
+  var isError = false.obs;
 
   @override
   onInit() {
     super.onInit();
-    fetchkatalog(page, '');
-    // getPage(page, '');
-    print('object');
+    katalogLoading();
     scrollController.value.addListener(() async {
       if (scrollController.value.position.maxScrollExtent ==
           scrollController.value.offset) {
-        page = page + 1;
+        if (hasMore) {
+          page = page + 1;
+          fetchkatalog(page, keyword);
+        }
+
         print('ok $page ${listKatalog.length}');
-        fetchkatalog(page, keyword);
 
         // getPage(page, keyword);
       }
     });
+    print('object');
     // print(katalogResponse!.total!);
-
-    // getKatalog();
   }
 
   cetak() {
     print("cetak");
   }
 
-  // Future<void> getKatalog() async {
-  //   try {
-  //     isLoading(true);
-  //     http.Response response = await http.get(Uri.tryParse(
-  //         'https://demo-service.kemenkeu.go.id/perpustakaan/Koleksi/GetAll?PageSize=10&Page=$page&keyword=$keyword')!);
-  //     print('konek api');
+  Future<void> searchKatalog() async {
+    try {
+      listKatalog.clear();
+      page = 1;
+      keyword = inputController.text;
+      fetchkatalog(page, keyword);
+    } catch (e) {
+      print(e);
+    } finally {
+      // isLoading(false);
+    }
+  }
 
-  //     if (response.statusCode == 200) {
-  //       Map result = jsonDecode(response.body);
-  //       print('dapet data');
+  Future<void> katalogLoading() async {
+    try {
+      isLoading(true);
 
-  //       List<dynamic> listDyn = result["Data"];
-  //       List<Katalog> listKatalog = [];
-  //       listDyn.forEach((element) {
-  //         listKatalog.add(Katalog.fromJson(element));
-  //       });
-
-  //       this.listKatalog.value = listKatalog;
-  //       this.listKatalog.refresh();
-  //       print('sampe sini');
-  //     } else {}
-  //   } catch (e) {
-  //     print('error');
-  //   } finally {
-  //     isLoading(false);
-  //   }
-  // }
-
-  // Future<void> getPage(int page, String keyword) async {
-  //   if (katalogResponse != null) {
-  //     listKatalog.addAll(katalogResponse!.data!);
-  //     katalogResponse!.data!.forEach((element) {});
-  //     hasMore = page * 10 < katalogResponse!.total!;
-
-  //     print("getPage kebaca");
-  //   }
-  // }
+      // await Future.delayed(Duration(seconds: 2));
+      page = 1;
+      listKatalog.value.clear();
+      listKatalog.refresh();
+      await fetchkatalog(page, keyword);
+    } catch (e) {
+      print(e);
+    } finally {
+      isLoading(false);
+    }
+  }
 
   Future<void> fetchkatalog(int page, String keyword) async {
     log("halo");
     try {
+      isError(false);
+      isLoading(true);
       katalogResponse = await Services().getListKatalog(page, keyword);
+      if (katalogResponse != null) {
+        katalogResponse!.data.forEach((element) {
+          print(element.id);
+          listKatalog.value.add(element);
+        });
+        listKatalog.refresh();
+        print("towtal ${listKatalog.value.length} < ${katalogResponse!.total}");
+        hasMore = listKatalog.value.length < katalogResponse!.total;
+      } else {
+        isError(true);
+      }
 
-      katalogResponse!.data.forEach((element) {
-        print(element.id);
-        listKatalog.value.add(element);
-      });
-      // listKatalog.value.addAll(katalogResponse!.data!);
-      listKatalog.refresh();
-      hasMore = page * 10 <= katalogResponse!.total;
       print(katalogResponse!.total);
-      // if (katalogResponse != null) {
-
-      // } else {
-      //   print("okok");
-      // }
     } catch (e) {
       print(e);
+    } finally {
+      isLoading(false);
     }
   }
 

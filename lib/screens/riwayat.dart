@@ -73,15 +73,28 @@ class GetXRiwayat extends StatelessWidget {
                             behavior: ScrollConfiguration.of(context)
                                 .copyWith(scrollbars: false),
                             child: Obx(() => ListView.builder(
-                                controller: c.scrollcontroller.value,
-                                shrinkWrap: true,
-                                padding: EdgeInsets.only(left: 10, right: 10),
-                                itemBuilder: (context, int index) {
-                                  return RiwayatCard(
-                                    iniRiwayat: c.listRiwayat.value[index],
-                                  );
-                                },
-                                itemCount: c.listRiwayat.value.length)),
+                                  controller: c.scrollcontroller.value,
+                                  shrinkWrap: true,
+                                  padding: EdgeInsets.only(left: 10, right: 10),
+                                  itemCount: c.listRiwayat.value.length + 1,
+                                  itemBuilder: (context, int index) {
+                                    if (index == c.listRiwayat.length) {
+                                      return Padding(
+                                        padding:
+                                            EdgeInsets.symmetric(vertical: 20),
+                                        child: Center(
+                                          child: c.hasMore
+                                              ? const CircularProgressIndicator()
+                                              : const Text('Data habis'),
+                                        ),
+                                      );
+                                    } else {
+                                      return RiwayatCard(
+                                        iniRiwayat: c.listRiwayat.value[index],
+                                      );
+                                    }
+                                  },
+                                )),
                           ),
                         ))
                       ],

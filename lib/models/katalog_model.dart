@@ -48,7 +48,7 @@ class DetailKatalogResponse {
 
   DetailKatalogResponse.fromJson(Map<String, dynamic> json) {
     data = json['Data'] != null ? new IsiKatalog.fromJson(json['Data']) : null;
-    errors = json['Errors'];
+    errors = json['Errors'] == null ? null : json['Errors'];
     success = json['Success'];
     message = json['Message'];
   }
@@ -91,7 +91,7 @@ class IsiKatalog {
 
   IsiKatalog.fromJson(Map<String, dynamic> json) {
     judulBuku = json['JudulBuku'];
-    abstrak = json['Abstrak'];
+    abstrak = json['Abstrak'] == null ? null : json['Abstrak'];
     lokasi = json['Lokasi'];
     subyek = json['Subyek'];
     fileCover = json['FileCover'];
@@ -210,7 +210,7 @@ class Katalog {
 
   int id;
   String judulBuku;
-  String abstrak;
+  String? abstrak;
   String lokasi;
 
   factory Katalog.fromJson(Map<String, dynamic> json) => Katalog(
