@@ -1,41 +1,3 @@
-// class Katalog {
-//   int? id;
-//   String? judulbuku;
-//   String? abstrak;
-//   String? lokasi;
-
-//   Katalog(
-//       {required this.judulbuku, required this.abstrak, required this.lokasi});
-
-//   Katalog.fromJson(Map<String, dynamic> json) {
-//     id = json['Id'];
-//     judulbuku = json['JudulBuku'];
-//     abstrak = json['Abstrak'];
-//     lokasi = json['Lokasi'];
-//   }
-// }
-
-// class KatalogResponse {
-//   List<Katalog>? data;
-//   int? total;
-//   bool? success;
-//   String? message;
-
-//   KatalogResponse({this.data, this.total, this.success, this.message});
-
-//   KatalogResponse.fromJson(Map<String, dynamic> json) {
-//     if (json['Data'] != null) {
-//       data = <Katalog>[];
-//       json['Data'].forEach((v) {
-//         data!.add(Katalog.fromJson(v));
-//       });
-//     }
-//     total = json['Total'];
-//     success = json['Success'];
-//     message = json['Message'];
-//   }
-// }
-
 import 'dart:convert';
 
 class DetailKatalogResponse {
@@ -117,47 +79,6 @@ class IsiKatalog {
     return data;
   }
 }
-// // // To parse this JSON data, do
-// // //
-// // //     final buku = bukuFromJson(jsonString);
-
-// // import 'package:meta/meta.dart';
-// // import 'dart:convert';
-
-// // Katalog bukuFromJson(String str) => Katalog.fromJson(json.decode(str));
-
-// // String bukuToJson(Katalog data) => json.encode(data.toJson());
-
-// // class Katalog {
-// //   Katalog({
-// //     required this.id,
-// //     required this.judulBuku,
-// //     required this.abstrak,
-// //     required this.lokasi,
-// //   });
-
-// //   int id;
-// //   String judulBuku;
-// //   String abstrak;
-// //   String lokasi;
-
-// //   factory Katalog.fromJson(Map<String, dynamic> json) => Katalog(
-// //         id: json["Id"] == null ? null : json["Id"],
-// //         judulBuku: json["JudulBuku"] == null ? null : json["JudulBuku"],
-// //         abstrak: json["Abstrak"] == null ? null : json["Abstrak"],
-// //         lokasi: json["Lokasi"] == null ? null : json["Lokasi"],
-// //       );
-
-// //   Map<String, dynamic> toJson() => {
-// //         "Id": id == null ? null : id,
-// //         "JudulBuku": judulBuku == null ? null : judulBuku,
-// //         "Abstrak": abstrak == null ? null : abstrak,
-// //         "Lokasi": lokasi == null ? null : lokasi,
-// //       };
-// // }
-// To parse this JSON data, do
-//
-//     final katalogResponse = katalogResponseFromJson(jsonString);
 
 KatalogResponse katalogResponseFromJson(String str) =>
     KatalogResponse.fromJson(json.decode(str));

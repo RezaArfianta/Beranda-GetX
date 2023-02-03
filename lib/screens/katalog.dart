@@ -116,58 +116,6 @@ class GetxKatalog extends StatelessWidget {
                               },
                             ),
                           );
-                          return Container(
-                            child: Text("${c.listKatalog.value.length}"),
-                          );
-                          return Container(
-                            child: ScrollConfiguration(
-                                behavior: ScrollConfiguration.of(context)
-                                    .copyWith(scrollbars: false),
-                                child: Column(
-                                  children: <Widget>[
-                                    Expanded(
-                                        child: Container(
-                                      child: ScrollConfiguration(
-                                        behavior:
-                                            ScrollConfiguration.of(context)
-                                                .copyWith(scrollbars: false),
-                                        child: Obx(() => ListView.builder(
-                                              controller:
-                                                  c.scrollController.value,
-                                              shrinkWrap: true,
-                                              padding: EdgeInsets.only(
-                                                  left: 10, right: 10),
-                                              itemCount:
-                                                  c.listKatalog.value.length +
-                                                      1,
-                                              itemBuilder:
-                                                  (context, int index) {
-                                                if (index ==
-                                                    c.listKatalog.length) {
-                                                  return Padding(
-                                                    padding:
-                                                        EdgeInsets.symmetric(
-                                                            vertical: 20),
-                                                    child: Center(
-                                                      child: c.hasMore
-                                                          ? const CircularProgressIndicator()
-                                                          : const Text(
-                                                              'Data habis'),
-                                                    ),
-                                                  );
-                                                } else {
-                                                  return KatalogCard(
-                                                    iniKatalog: c.listKatalog
-                                                        .value[index],
-                                                  );
-                                                }
-                                              },
-                                            )),
-                                      ),
-                                    ))
-                                  ],
-                                )),
-                          );
                         }
 
                         return Container();

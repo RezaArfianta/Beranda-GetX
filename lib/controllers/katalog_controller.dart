@@ -96,47 +96,4 @@ class KatalogController extends GetxController {
       isLoading(false);
     }
   }
-
-  // fetch(int page, String keyword) async {
-  //   katalogResponse = await KatalogController.getKatalog(page, keyword);
-  // if (katalogResponse != null) {
-  //   listKatalog.addAll(inikatalog!.data!);
-  //   inikatalog!.data!.forEach((element) {});
-  //   hasMore = page * 10 <= inikatalog!.total!;
-  // }
-  // }
-  // readData(BuildContext context) async {
-  //   isLoading.value = true;
-  //   await Future.delayed(Duration(seconds: 2));
-  //   await DefaultAssetBundle.of(context)
-  //       .loadString("/models/buku.json")
-  //       .then((s) {
-  //     // listBuku.value = json.decode(s);
-  //     Map jsonData = jsonDecode(s);
-  //     List<dynamic> listDyn = jsonData["Data"];
-  //     List<Buku> listBuku = [];
-  //     listDyn.forEach(
-  //       (element) {
-  //         listBuku.add(Buku.fromJson(element));
-  //       },
-  //     );
-
-  //     this.listBuku.value = listBuku;
-  //     log(jsonEncode(jsonData["Data"]), name: "return model buku");
-  //     this.listBuku.refresh();
-  //   });
-
-  //   isLoading.value = false;
-  // }
-
 }
-    // fetch(page, '');
-
-    // scrollController.addListener(() {
-    //   if (scrollController.position.maxScrollExtent ==
-    //       scrollController.offset) {
-    //     page = page + 1;
-    //     print('ok $page ${listKatalog.length}');
-    //     fetch(page, keyword);
-    //   }
-    // });
